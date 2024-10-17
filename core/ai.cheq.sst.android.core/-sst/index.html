@@ -1,0 +1,288 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Sst</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/cheq-styles.css" rel="Stylesheet"></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            SST Android SDK
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="Core SDK::ai.cheq.sst.android.core/Sst///PointingToDeclaration//-27209644">
+  <div class="breadcrumbs"><a href="../../index.html">Core SDK</a><span class="delimiter">/</span><a href="../index.html">ai.cheq.sst.android.core</a><span class="delimiter">/</span><span class="current">Sst</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Sst</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Sst</a></div><p class="paragraph">The main entry point for the CHEQ SST SDK.</p><p class="paragraph">The <code class="lang-kotlin">Sst</code> object is the main entry point for the CHEQ SST SDK. It provides methods for configuring the SDK, tracking events, and accessing the data layer.</p><p class="paragraph">The Event and included model information is encoded according to the <a href="https://help.ensighten.com/hc/en-us/articles/22990062690577-SST-Protocol-Reference">SST Protocol</a> before being sent to SST.</p><p class="paragraph"><strong>Links</strong></p><p class="paragraph">More information about parameters that can be passed to the CHEQ SST service, see <a href="https://help.ensighten.com/hc/en-us/articles/22962356688273-Getting-Started-with-Data-Collection-Pixels">Getting Started with Data Collection Pixels</a></p><h4 class="">Samples</h4><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.Config
+import ai.cheq.sst.android.core.Event
+import ai.cheq.sst.android.core.Sst
+import ai.cheq.sst.android.core.models.Model
+import ai.cheq.sst.android.core.models.ModelContext
+import ai.cheq.sst.android.core.models.Models
+import kotlin.test.*
+
+fun main() { 
+   //sampleStart 
+   runBlocking {
+            Sst.configure(Config("client_name")) { context }
+
+            // Track a screen view event
+            Sst.trackEvent(Event("screen_view", data = mapOf("screen_name" to "Home")))
+        } 
+   //sampleEnd
+}</code></pre></div><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.Config
+import ai.cheq.sst.android.core.Event
+import ai.cheq.sst.android.core.Sst
+import ai.cheq.sst.android.core.models.Model
+import ai.cheq.sst.android.core.models.ModelContext
+import ai.cheq.sst.android.core.models.Models
+import kotlin.test.*
+
+fun main() { 
+   //sampleStart 
+   runBlocking {
+            Sst.configure(Config("client_name")) { context }
+
+            // Track a screen view event with additional query string parameters passed to the CHEQ SST Service
+            Sst.trackEvent(
+                Event(
+                    "screen_view",
+                    data = mapOf("screen_name" to "Home"),
+                    parameters = mapOf("ensDisableTracking" to "user")
+                )
+            )
+        } 
+   //sampleEnd
+}</code></pre></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1929071953%2FProperties%2F-27209644" anchor-label="dataLayer" id="1929071953%2FProperties%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="data-layer.html"><span>data</span><wbr><span><span>Layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1929071953%2FProperties%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">val </span><a href="data-layer.html">dataLayer</a><span class="token operator">: </span><a href="../-data-layer/index.html">DataLayer</a></div><div class="brief "><p class="paragraph">The <a href="../-data-layer/index.html">DataLayer</a> that stores key-value pairs to persistent storage for automatic inclusion in all <a href="../../../core/ai.cheq.sst.android.core/-sst/track-event.html">Sst.trackEvent</a> calls.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1880444735%2FFunctions%2F-27209644" anchor-label="clearCheqUuid" id="1880444735%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-cheq-uuid.html"><span>clear</span><wbr><span>Cheq</span><wbr><span><span>Uuid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1880444735%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="clear-cheq-uuid.html"><span class="token function">clearCheqUuid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Clears the CHEQ UUID (universally unique identifier) from persistent storage. The CHEQ UUID is automatically set by the SDK when an <a href="../../../core/ai.cheq.sst.android.core/-sst/track-event.html">Sst.trackEvent</a> call is made.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1095220512%2FFunctions%2F-27209644" anchor-label="config" id="1095220512%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="config.html"><span><span>config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1095220512%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">fun </span><a href="config.html"><span class="token function">config</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-config/index.html">Config</a></div><div class="brief "><p class="paragraph">Returns the current configuration of the SDK.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-223845169%2FFunctions%2F-27209644" anchor-label="configure" id="-223845169%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="configure.html"><span><span>configure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-223845169%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">fun </span><a href="configure.html"><span class="token function">configure</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../-config/index.html">Config</a><span class="token punctuation">, </span></span><span class="parameter ">contextProvider<span class="token operator">: </span><a href="../-context-provider/index.html">ContextProvider</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Configures the CHEQ SST SDK with the specified <a href="configure.html">contextProvider</a> and <a href="configure.html">config</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1649557994%2FFunctions%2F-27209644" anchor-label="getCheqUuid" id="-1649557994%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-cheq-uuid.html"><span>get</span><wbr><span>Cheq</span><wbr><span><span>Uuid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1649557994%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-cheq-uuid.html"><span class="token function">getCheqUuid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Gets the CHEQ UUID (universally unique identifier) from persistent storage. The CHEQ UUID is automatically set by the SDK when an <a href="../../../core/ai.cheq.sst.android.core/-sst/track-event.html">Sst.trackEvent</a> call is made.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1391365994%2FFunctions%2F-27209644" anchor-label="getMobileData" id="-1391365994%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-mobile-data.html"><span>get</span><wbr><span>Mobile</span><wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1391365994%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-mobile-data.html"><span class="token function">getMobileData</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets the mobile data collected by the SDK.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1278524621%2FFunctions%2F-27209644" anchor-label="onError" id="-1278524621%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-error.html"><span>on</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1278524621%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="on-error.html"><span class="token function">onError</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.monitoring/-event-handler/index.html">EventHandler</a><span class="token operator">&lt;</span><a href="../../ai.cheq.sst.android.core.monitoring/-error/index.html">Error</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a callback to be invoked when an <a href="../../ai.cheq.sst.android.core.monitoring/-error/index.html">Error</a> is emitted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1541232665%2FFunctions%2F-27209644" anchor-label="onRequest" id="1541232665%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-request.html"><span>on</span><wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541232665%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="on-request.html"><span class="token function">onRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.monitoring/-event-handler/index.html">EventHandler</a><span class="token operator">&lt;</span><a href="../../ai.cheq.sst.android.core.monitoring/-http-request/index.html">HttpRequest</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a callback to be invoked when a <a href="../../ai.cheq.sst.android.core.monitoring/-http-request/index.html">HttpRequest</a> is emitted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1188166649%2FFunctions%2F-27209644" anchor-label="onResponse" id="1188166649%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-response.html"><span>on</span><wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1188166649%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="on-response.html"><span class="token function">onResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.monitoring/-event-handler/index.html">EventHandler</a><span class="token operator">&lt;</span><a href="../../ai.cheq.sst.android.core.monitoring/-http-response/index.html">HttpResponse</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a callback to be invoked when a <a href="../../ai.cheq.sst.android.core.monitoring/-http-response/index.html">HttpResponse</a> is emitted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1725220808%2FFunctions%2F-27209644" anchor-label="trackEvent" id="-1725220808%2FFunctions%2F-27209644" data-filterable-set=":core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:dokkaHtmlPartial/release" data-filterable-set=":core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="track-event.html"><span>track</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1725220808%2FFunctions%2F-27209644"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="track-event.html"><span class="token function">trackEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="../../../core/ai.cheq.sst.android.core/-sst-event/index.html">SstEvent</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sends the specified <a href="track-event.html">event</a> to the CHEQ SST server, including data from all configured models and the key-value pairs stored in the <a href="data-layer.html">dataLayer</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright - CHEQ AI Technologies Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

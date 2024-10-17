@@ -1,0 +1,9 @@
+/*
+    Disable Kotlin Playground for @sample rendering (https://github.com/Kotlin/dokka/issues/3041)
+*/
+div.run-button {
+    display: none;
+}
+div.compiler-info.compiler-info_crosslink {
+    display: none;
+}

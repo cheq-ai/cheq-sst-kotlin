@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>All modules</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="images/logo-icon.svg">
+<link href="styles/cheq-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="index.html">
+                            SST Android SDK
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="SST Android SDK::.ext/allModules///PointingToDeclaration//0">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <div class="cover ">
+      <h2 class="">Getting Started</h2>
+      <h3 class="">Installation</h3>
+      <p class="paragraph">TBD</p>
+      <h3 class="">Usage</h3>
+      <h4 class="">Configure</h4>
+      <p class="paragraph">To use the Android Server-Side Tagging (SST) SDK it must be configured by calling the <code class="lang-kotlin">Sst.configure</code> method.<br>This method takes a <code class="lang-kotlin">Config</code> object and a <code class="lang-kotlin">ContextProvider</code> as parameters. The <code class="lang-kotlin">Config</code> object is used to configure the SDK with the necessary information to send events to the server. The <code class="lang-kotlin">ContextProvider</code> is used to provide the SDK with the android context used to extract the necessary information to enrich the events.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;)<br>Sst.configure(sstConfig) { this }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">While developing, you can enable debug to print log messages to the console that include information about the request and response from SST.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;)<br>Sst.configure(sstConfig, debug = true) { this }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">You will need to use <code class="lang-kotlin">adb</code> enable the <code class="lang-kotlin">log.tag.cheq.sst</code> log tag to see the log messages in <a href="https://developer.android.com/studio/debug/logcat">Android Studio Logcat</a>.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-shell" theme="idea">adb shell setprop log.tag.cheq.sst DEBUG</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h4 class="">Track Event</h4>
+      <p class="paragraph">To track an event, call the <code class="lang-kotlin">Sst.trackEvent</code> method, passing it an <code class="lang-kotlin">Event</code> object as a parameter. The Event and included model information is encoded according to the <a href="https://help.ensighten.com/hc/en-us/articles/22990062690577-SST-Protocol-Reference">SST Protocol</a> before being sent to SST.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val event = Event(&quot;launch&quot;)<br>Sst.trackEvent(event)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">To include additional data for the event, populate the data property.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val event = Event(&quot;screen_view&quot;, mapOf(&quot;screen_name&quot; to &quot;Home&quot;))<br>Sst.trackEvent(event) </code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">To include additional <a href="https://help.ensighten.com/hc/en-us/articles/22962356688273-Getting-Started-with-Data-Collection-Pixels">query parameters</a> for the event, populate the parameters property.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val event = Event(&quot;screen_view&quot;, parameters = mapOf(&quot;ensDisableTracking&quot; to &quot;user&quot;))<br>Sst.trackEvent(event) </code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h4 class="">Persistent Data Layer</h4>
+      <p class="paragraph">The SDK includes a simple key-value store, called the DataLayer, that can be used to store data that is persisted to disk and included in every request sent to SST.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">Sst.dataLayer.get&lt;Int&gt;(&quot;launch_count&quot;)?.let {<br>    Sst.dataLayer.add(&quot;launch_count&quot;, it + 1)<br>} ?: Sst.dataLayer.add(&quot;launch_count&quot;, 1)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h4 class="">CHEQ UUID</h4>
+      <p class="paragraph">The CHEQ <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> is automatically generated and populated by the SST servers. This unique identifier is persisted to disk by the SDK, ensuring it is available across multiple sessions and app launches. The UUID is a critical component in identifying and tracking users or sessions, and it is included on every request to SST.</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">// retrieve CHEQ UUID<br>val uuid = Sst.getCheqUuid()<br><br>// clear the stored CHEQ UUID<br>Sst.clearCheqUuid()</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+    </div>
+    <h2 class="">All modules:</h2>
+    <div class="table"><a data-name="-449036224%2FMain%2F0" anchor-label="Advertising Model" id="-449036224%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="models/advertising/index.html">Advertising Model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-449036224%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The advertising model module contains the model that exposed the advertising data. Including this module in your project will add the <code class="lang-kotlin">com.google.android.gms.permission.AD_ID</code> permission to your AndroidManifest.xml file.</p>
+            </span></div>
+        </div>
+      </div>
+<a data-name="1388824636%2FMain%2F0" anchor-label="Core SDK" id="1388824636%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="core/index.html">Core SDK</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1388824636%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">The Core SDK module is the main entry point for the SDK. It exposes the Sst class which is used to configure the SDK and send events to the server.</p>
+            </span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright - CHEQ AI Technologies Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
