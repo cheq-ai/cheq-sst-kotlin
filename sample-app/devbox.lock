@@ -1,0 +1,81 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "android-studio-tools@11076708": {
+      "last_modified": "2024-07-31T08:48:38Z",
+      "resolved": "github:NixOS/nixpkgs/c3392ad349a5227f4a3464dce87bcc5046692fce#android-studio-tools",
+      "source": "devbox-search",
+      "version": "11076708",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m0kv6ylg9wbzr25j5lrk3ppy5w08529g-android-studio-tools-11076708",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m0kv6ylg9wbzr25j5lrk3ppy5w08529g-android-studio-tools-11076708"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/238zpa4mnwbsn7agm9b7bgy2y26p60xz-android-studio-tools-11076708",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/238zpa4mnwbsn7agm9b7bgy2y26p60xz-android-studio-tools-11076708"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/a2982cfhyna6xjl1xy34xkrdg6w3h7lj-android-studio-tools-11076708",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/a2982cfhyna6xjl1xy34xkrdg6w3h7lj-android-studio-tools-11076708"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gl2bn8g8cdkny7m342shmmacq2189gig-android-studio-tools-11076708",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gl2bn8g8cdkny7m342shmmacq2189gig-android-studio-tools-11076708"
+        }
+      }
+    },
+    "jdk@17.0.10": {
+      "last_modified": "2024-07-31T08:48:38Z",
+      "resolved": "github:NixOS/nixpkgs/c3392ad349a5227f4a3464dce87bcc5046692fce#jdk17",
+      "source": "devbox-search",
+      "version": "17.0.10",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/91mrx7fzw0j4h8mz6lhyyig4lkffr2al-zulu-ca-jdk-17.0.10",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/91mrx7fzw0j4h8mz6lhyyig4lkffr2al-zulu-ca-jdk-17.0.10"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4ibq7fg8fb85xkmnwvnlkbb76b7gp0v4-zulu-ca-jdk-17.0.10",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4ibq7fg8fb85xkmnwvnlkbb76b7gp0v4-zulu-ca-jdk-17.0.10"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">SST Sample App</string>
+    <string name="send_event">Send Event</string>
+    <string name="configure">Configure</string>
+    <string name="mobile_data">Mobile Data</string>
+    <string name="kotlin_basic_send_event">Kotlin Basic Send Event</string>
+    <string name="java_basic_send_event">Java Basic Send Event</string>
+    <string name="client">Client</string>
+    <string name="domain">Domain</string>
+    <string name="publish_path">Publish path</string>
+    <string name="nexus_host">Nexus host</string>
+    <string name="send">Send</string>
+    <string name="required">required</string>
+    <string name="request">Request</string>
+    <string name="response">Response</string>
+    <string name="enable_debug">Enable debug</string>
+    <string name="output_geo">Output geo</string>
+    <string name="cheq_uuid">CHEQ UUID</string>
+    <string name="include_custom_model">Custom</string>
+    <string name="refresh">Refresh</string>
+    <string name="data_layer_name">Data layer name</string>
+    <string name="include_data_layer">Include data layer</string>
+    <string name="include_advertising_model">Advertising</string>
+    <string name="models">Models</string>
+    <string name="options">Options</string>
+    <string name="data_layer">Data layer</string>
+    <string name="populate">Populate</string>
+    <string name="clear">Clear</string>
+    <string name="event_type">Event type</string>
+    <string name="launch_count">launch_count</string>
+</resources>

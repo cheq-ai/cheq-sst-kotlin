@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ai.cheq.sst.android.sample.app.examples.sendevent.basic.BasicSendEventConfigureFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/client_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/client_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/client"
+                android:text="@string/client" />
+
+            <EditText
+                android:id="@+id/client"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="client_label,client"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/domain_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/client_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/domain_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/domain"
+                android:text="@string/domain" />
+
+            <EditText
+                android:id="@+id/domain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="domain_label,domain"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/publish_path_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/domain_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/publish_path_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/publish_path"
+                android:text="@string/publish_path" />
+
+            <EditText
+                android:id="@+id/publish_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="publish_path_label,publish_path"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nexus_host_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publish_path_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/nexus_host_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/nexus_host"
+                android:text="@string/nexus_host" />
+
+            <EditText
+                android:id="@+id/nexus_host"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="nexus_host_label,nexus_host"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/data_layer_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nexus_host_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/data_layer_name_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/data_layer_name"
+                android:text="@string/data_layer_name" />
+
+            <EditText
+                android:id="@+id/data_layer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="data_layer_name_label,data_layer_name"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/models_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/data_layer_name_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/models_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/nexus_host"
+                android:text="@string/models" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/models_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/models_label"
+                app:layout_constraintWidth_max="488dp">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_custom_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:minHeight="48dp"
+                    android:text="@string/include_custom_model" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_advertising_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:minHeight="48dp"
+                    android:text="@string/include_advertising_model" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:constraint_referenced_ids="include_custom_model,include_advertising_model"
+                    app:flow_horizontalAlign="start"
+                    app:flow_verticalGap="0dp"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:flow_wrapMode="aligned"
+                app:constraint_referenced_ids="models_label,models_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/options_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/models_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/options_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/nexus_host"
+                android:text="@string/options" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/options_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/options_label"
+                app:layout_constraintWidth_max="488dp">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/enable_debug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/enable_debug"
+                    android:minHeight="48dp" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:constraint_referenced_ids="enable_debug"
+                    app:flow_horizontalAlign="start"
+                    app:flow_verticalGap="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="options_label,options_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/data_layer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/options_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/data_layer_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/nexus_host"
+                android:text="@string/data_layer" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/data_layer_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/data_layer_layout"
+                app:layout_constraintWidth_max="488dp">
+
+                <Button
+                    android:id="@+id/populate_data_layer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/populate"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <Button
+                    android:id="@+id/clear_data_layer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/clear"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:constraint_referenced_ids="populate_data_layer,clear_data_layer"
+                    app:flow_horizontalAlign="start"
+                    app:flow_horizontalGap="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="data_layer_label,data_layer_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="client_layout,domain_layout,publish_path_layout,nexus_host_layout,data_layer_name_layout,models_layout,options_layout,data_layer_layout"
+            app:flow_horizontalAlign="start"
+            app:flow_verticalGap="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ai.cheq.sst.android.sample.app.examples.sendevent.basic.kotlin.KotlinBasicSendEventSendFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="64dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_type_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/event_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/event_type"
+                app:layout_constraintBottom_toBottomOf="@id/event_type"
+                android:paddingEnd="5dp"
+                android:text="@string/event_type"
+                android:textColor="?attr/colorOnSurface" />
+
+            <Spinner
+                android:id="@+id/event_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@id/event_type_label"
+                app:layout_constraintBaseline_toBaselineOf="@id/event_type_label"
+                app:layout_constraintStart_toEndOf="@id/event_type_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:spinnerMode="dropdown"
+                android:minHeight="48dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/switch_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/event_type_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/output_geo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/output_geo"
+                android:minHeight="48dp" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="output_geo"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cheq_uuid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switch_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/cheq_uuid_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingEnd="5dp"
+                android:labelFor="@+id/cheq_uuid"
+                android:text="@string/cheq_uuid"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/cheq_uuid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:importantForAutofill="no"
+                android:textIsSelectable="true"
+                android:gravity="center"
+                app:autoSizeTextType="none"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeStepGranularity="1sp"
+                android:height="36dp"
+                android:background="@drawable/border"
+                app:layout_constraintEnd_toStartOf="@+id/cheq_uuid_clear"
+                app:layout_constraintStart_toEndOf="@+id/cheq_uuid_label"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="?attr/colorOnSurface" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cheq_uuid_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:height="48dp"
+                app:icon="@android:drawable/ic_menu_delete"
+                app:iconPadding="0dp"
+                android:enabled="false"
+                android:clickable="false"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_max="320dp" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:constraint_referenced_ids="cheq_uuid_label,cheq_uuid,cheq_uuid_clear"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/request_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cheq_uuid_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/request_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/request"
+                android:text="@string/request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                android:textColor="?attr/colorOnSurface" />
+
+            <ScrollView
+                android:id="@+id/request_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scrollbars="vertical"
+                android:background="@drawable/border"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/request_label">
+
+                <TextView
+                    android:id="@+id/request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:textIsSelectable="true"
+                    android:minHeight="48dp"
+                    android:textColor="?attr/colorOnSurface" />
+            </ScrollView>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="request_label,request_scrollview"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/response_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/request_layout"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/response_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/response"
+                android:text="@string/response"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                android:textColor="?attr/colorOnSurface" />
+
+            <ScrollView
+                android:id="@+id/response_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scrollbars="vertical"
+                android:background="@drawable/border"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/response_label">
+
+                <TextView
+                    android:id="@+id/response"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:textIsSelectable="true"
+                    android:minHeight="48dp"
+                    android:textColor="?attr/colorOnSurface" />
+            </ScrollView>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="response_label,response_scrollview"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="48dp"
+            android:text="@string/send"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_max="320dp" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="event_type_layout,switch_layout,cheq_uuid_layout,request_layout,response_layout,send"
+            app:flow_horizontalAlign="start"
+            app:flow_verticalGap="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
