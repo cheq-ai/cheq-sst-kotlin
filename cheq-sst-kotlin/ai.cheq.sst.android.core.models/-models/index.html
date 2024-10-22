@@ -1,0 +1,236 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Models</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/cheq-styles.css" rel="Stylesheet"></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            Android Server-Side Tagging (SST) SDK
+                    </a>            </div>
+            <div class="library-version">0.1.0
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":cheq-sst-kotlin:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="Core SDK::ai.cheq.sst.android.core.models/Models///PointingToDeclaration//11457359">
+  <div class="breadcrumbs"><a href="../../index.html">Core SDK</a><span class="delimiter">/</span><a href="../index.html">ai.cheq.sst.android.core.models</a><span class="delimiter">/</span><span class="current">Models</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Models</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Models</a></div><p class="paragraph">The Models class provides a way to manage and access models that collect and expose data. Custom models can be added to the collection as long as they do not conflict with base models. The following base models are always included and cannot be overridden:</p><ul><li><p class="paragraph"><a href="../-app-model/index.html">AppModel</a></p></li><li><p class="paragraph"><a href="../-device-model/index.html">DeviceModel</a></p></li><li><p class="paragraph"><a href="../-library-model/index.html">LibraryModel</a></p></li></ul><h4 class="">Samples</h4><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.models.Model
+import ai.cheq.sst.android.core.models.ModelContext
+import ai.cheq.sst.android.core.models.Models
+
+fun main() { 
+   //sampleStart 
+   // Create the Models collection with the custom model
+val models = Models()
+println(models.all().size) // 3 
+   //sampleEnd
+}</code></pre></div><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.models.Model
+import ai.cheq.sst.android.core.models.ModelContext
+import ai.cheq.sst.android.core.models.Models
+
+fun main() { 
+   //sampleStart 
+   // Create a custom model
+class CustomModel : Model&lt;CustomModel.Data&gt;(Data::class, "custom_model") {
+    override suspend fun get(modelContext: ModelContext): Data {
+        return Data()
+    }
+
+    inner class Data : Model.Data() {
+        @JsonProperty
+        val foo: String = "bar"
+    }
+}
+
+// Create the Models collection with the custom model
+val models = Models(CustomModel())
+println(models.all().size) // 4
+println(models.get&lt;CustomModel&gt;()?.identifier?.key) // custom_model 
+   //sampleEnd
+}</code></pre></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="255288240%2FConstructors%2F11457359" anchor-label="Models" id="255288240%2FConstructors%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-models.html"><span><span>Models</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="255288240%2FConstructors%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>customModels<span class="token operator">: </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates a new collection of models including the specified custom models.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="722486557%2FFunctions%2F11457359" anchor-label="add" id="722486557%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="722486557%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">model<span class="token operator">: </span><a href="add.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a custom model to the collection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1186173893%2FFunctions%2F11457359" anchor-label="all" id="-1186173893%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all.html"><span><span>all</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1186173893%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="all.html"><span class="token function">all</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Retrieves all models in the collection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1227250354%2FFunctions%2F11457359" anchor-label="get" id="-1227250354%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1227250354%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clazz<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Retrieves a model of the specified class.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1235621590%2FFunctions%2F11457359" anchor-label="minusAssign" id="1235621590%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minus-assign.html"><span>minus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1235621590%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="minus-assign.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="minus-assign.html"><span class="token function">minusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">model<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><a href="minus-assign.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes a model of the specified type from the collection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="132092343%2FFunctions%2F11457359" anchor-label="plusAssign" id="132092343%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="plus-assign.html"><span>plus</span><wbr><span><span>Assign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="132092343%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="plus-assign.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="plus-assign.html"><span class="token function">plusAssign</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">model<span class="token operator">: </span><a href="plus-assign.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a custom model to the collection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-757542701%2FFunctions%2F11457359" anchor-label="remove" id="-757542701%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove.html"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-757542701%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clazz<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator"> : </span><a href="../-model/index.html">Model</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clazz<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><a href="remove.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes a model of the specified type from the collection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright - CHEQ AI Technologies Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

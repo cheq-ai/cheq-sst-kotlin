@@ -42,11 +42,11 @@
             <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
             <div class="library-name">
                     <a class="library-name--link" href="index.html">
-                            SST Android SDK
+                            Android Server-Side Tagging (SST) SDK
                     </a>
             </div>
             <div class="library-version">
-            </div>
+0.1.0            </div>
         </div>
     </div>
     <div class="navigation-controls">
@@ -59,13 +59,41 @@
                 <div class="sidebar--inner" id="sideMenu"></div>
             </div>
             <div id="main">
-<div class="main-content" id="content" pageIds="SST Android SDK::.ext/allModules///PointingToDeclaration//0">
+<div class="main-content" id="content" pageIds="Android Server-Side Tagging (SST) SDK::.ext/allModules///PointingToDeclaration//0">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <div class="cover ">
       <h2 class="">Getting Started</h2>
       <h3 class="">Installation</h3>
-      <p class="paragraph">TBD</p>
+      <ol>
+        <li>
+          <p class="paragraph">Open the <code class="lang-kotlin">build.gradle.kts</code> file</p>
+        </li>
+        <li>
+          <p class="paragraph">Ensure the following is included in the repositories block:</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea"> repositories {<br>     mavenCentral()<br> }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+        <li>
+          <p class="paragraph">Ensure the <code class="lang-kotlin">cheq-sst-kotlin</code> dependency is included in the dependencies block.  You can find the latest version of the SDK on <a href="https://search.maven.org/artifact/ai.cheq.sst.android/cheq-sst-kotlin">Maven Central</a> or use the version <code class="lang-kotlin">latest.release</code> to get the most recent release.</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea"> dependencies {<br>     implementation(&quot;ai.cheq.sst.android:cheq-sst-kotlin:latest.release&quot;)<br> }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+        <li>
+          <p class="paragraph">Optionally include the <code class="lang-kotlin">cheq-sst-kotlin-advertising</code> dependency in the dependencies block.  You can find the latest version of the SDK on <a href="https://search.maven.org/artifact/ai.cheq.sst.android/cheq-sst-kotlin-advertising">Maven Central</a> or use the version <code class="lang-kotlin">latest.release</code> to get the most recent release.</p>
+          <div class="sample-container">
+            <pre><code class="block lang-kotlin" theme="idea"> dependencies {<br>     implementation(&quot;ai.cheq.sst.android:cheq-sst-kotlin-advertising:latest.release&quot;)<br> }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+              <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+            </span></div>
+        </li>
+      </ol>
       <h3 class="">Usage</h3>
       <h4 class="">Configure</h4>
       <p class="paragraph">To use the Android Server-Side Tagging (SST) SDK it must be configured by calling the <code class="lang-kotlin">Sst.configure</code> method.<br>This method takes a <code class="lang-kotlin">Config</code> object and a <code class="lang-kotlin">ContextProvider</code> as parameters. The <code class="lang-kotlin">Config</code> object is used to configure the SDK with the necessary information to send events to the server. The <code class="lang-kotlin">ContextProvider</code> is used to provide the SDK with the android context used to extract the necessary information to enrich the events.</p>
@@ -125,7 +153,7 @@
       <div class="table-row">
         <div class="main-subrow ">
           <div class="w-100"><span class="inline-flex">
-              <div><a href="models/advertising/index.html">Advertising Model</a></div>
+              <div><a href="cheq-sst-kotlin-advertising/index.html">Advertising Model</a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-449036224%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
@@ -138,7 +166,7 @@
       <div class="table-row">
         <div class="main-subrow ">
           <div class="w-100"><span class="inline-flex">
-              <div><a href="core/index.html">Core SDK</a></div>
+              <div><a href="cheq-sst-kotlin/index.html">Core SDK</a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1388824636%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>

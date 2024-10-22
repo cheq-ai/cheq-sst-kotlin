@@ -1,0 +1,184 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DataLayer</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../styles/cheq-styles.css" rel="Stylesheet"></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            Android Server-Side Tagging (SST) SDK
+                    </a>            </div>
+            <div class="library-version">0.1.0
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":cheq-sst-kotlin:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="Core SDK::ai.cheq.sst.android.core/DataLayer///PointingToDeclaration//11457359">
+  <div class="breadcrumbs"><a href="../../index.html">Core SDK</a><span class="delimiter">/</span><a href="../index.html">ai.cheq.sst.android.core</a><span class="delimiter">/</span><span class="current">DataLayer</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Data</span><wbr><span><span>Layer</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">DataLayer</a></div><p class="paragraph">A data layer that stores key-value pairs to persistent storage.</p><p class="paragraph">The data layer is a simple key-value store that can be used to store data that needs to be included in every <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-sst/track-event.html">Sst.trackEvent</a> call. The data layer is stored in the application's data store, and can be accessed using the <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-data-layer/add.html">add</a>, <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-data-layer/all.html">all</a>, <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-data-layer/clear.html">clear</a>, <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-data-layer/contains.html">contains</a>, <a href="get.html">get</a>, and <a href="../../../cheq-sst-kotlin/ai.cheq.sst.android.core/-data-layer/remove.html">remove</a> methods.</p><p class="paragraph">The data layer is implemented as a singleton, and is accessed using the <a href="../-sst/data-layer.html">Sst.dataLayer</a> property.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="804686284%2FFunctions%2F11457359" anchor-label="add" id="804686284%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="804686284%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="add.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="add.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Associates the specified <a href="add.html">value</a> with the specified <a href="add.html">key</a> in the data layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1345037276%2FFunctions%2F11457359" anchor-label="all" id="-1345037276%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all.html"><span><span>all</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1345037276%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="all.html"><span class="token function">all</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a map of all key-value pairs in the data layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="430464760%2FFunctions%2F11457359" anchor-label="clear" id="430464760%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear.html"><span><span>clear</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="430464760%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="clear.html"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Clears all key-value pairs from the data layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2134306862%2FFunctions%2F11457359" anchor-label="contains" id="2134306862%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2134306862%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Determines whether the data layer contains the specified key.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-379275947%2FFunctions%2F11457359" anchor-label="get" id="-379275947%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-379275947%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="get.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="get.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the value associated with the specified <a href="get.html">key</a>, or <code class="lang-kotlin">null</code> if the key is not in the data layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1483237165%2FFunctions%2F11457359" anchor-label="remove" id="-1483237165%2FFunctions%2F11457359" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove.html"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1483237165%2FFunctions%2F11457359"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Removes the specified key and its corresponding value from the data layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright - CHEQ AI Technologies Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
