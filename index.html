@@ -46,7 +46,7 @@
                     </a>
             </div>
             <div class="library-version">
-0.1.2            </div>
+0.1.3            </div>
         </div>
     </div>
     <div class="navigation-controls">
@@ -98,13 +98,13 @@
       <h4 class="">Configure</h4>
       <p class="paragraph">To use the Android Server-Side Tagging (SST) SDK it must be configured by calling the <code class="lang-kotlin">Sst.configure</code> method.<br>This method takes a <code class="lang-kotlin">Config</code> object and a <code class="lang-kotlin">ContextProvider</code> as parameters. The <code class="lang-kotlin">Config</code> object is used to configure the SDK with the necessary information to send events to the server. The <code class="lang-kotlin">ContextProvider</code> is used to provide the SDK with the android context used to extract the necessary information to enrich the events.</p>
       <div class="sample-container">
-        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;)<br>Sst.configure(sstConfig) { this }</code></pre>
+        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;)<br>Sst.configure(config) { this }</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
       <p class="paragraph">While developing, you can enable debug to print log messages to the console that include information about the request and response from SST.</p>
       <div class="sample-container">
-        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;, debug = true)<br>Sst.configure(sstConfig) { this }</code></pre>
+        <pre><code class="block lang-kotlin" theme="idea">val config = Config(&quot;client_name&quot;, debug = true)<br>Sst.configure(config) { this }</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
           <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
         </span></div>
