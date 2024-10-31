@@ -43,7 +43,7 @@
 <a class="library-name--link" href="../../../index.html">
                             Android Server-Side Tagging (SST) SDK
                     </a>            </div>
-            <div class="library-version">0.1.3
+            <div class="library-version">0.2.0
             </div>
         </div>
         <div class="filter-section" id="filter-section">
@@ -68,6 +68,7 @@
   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-mobile-data.html"><span class="token function">getMobileData</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><p class="paragraph">Gets the mobile data collected by the SDK.</p><p class="paragraph"><a href="configure.html"><strong>Sst.configure</strong></a><strong> must be called once before this method is called.</strong></p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">A map of the mobile data collected by the SDK.</p></span><h4 class="">Throws</h4><div class="table"><div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ai.cheq.sst.android.core.exceptions/-not-configured-exception/index.html"><span>Not</span><wbr><span>Configured</span><wbr><span><span>Exception</span></span></a></div></span></div><div><div class="title"><p class="paragraph">If the SDK has not been configured.</p></div></div></div></div></div><h4 class="">Samples</h4><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.Config
 import ai.cheq.sst.android.core.Event
 import ai.cheq.sst.android.core.Sst
+import ai.cheq.sst.android.core.config.VirtualBrowser
 import ai.cheq.sst.android.core.models.Model
 import ai.cheq.sst.android.core.models.ModelContext
 import ai.cheq.sst.android.core.models.Models
