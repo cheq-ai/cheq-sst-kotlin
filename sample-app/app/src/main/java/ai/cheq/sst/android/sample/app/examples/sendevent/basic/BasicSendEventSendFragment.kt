@@ -1,6 +1,7 @@
 package ai.cheq.sst.android.sample.app.examples.sendevent.basic
 
 import ai.cheq.sst.android.app.R
+import ai.cheq.sst.android.sample.app.examples.TabFragment
 import ai.cheq.sst.android.sample.app.examples.enableButton
 import android.graphics.Color
 import android.os.Bundle
@@ -12,7 +13,6 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
@@ -25,7 +25,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.MaterialColors
 
 abstract class BasicSendEventSendFragment(private val wrapper: SendWrapper) :
-    Fragment(R.layout.fragment_basic_send_event_send) {
+    TabFragment(R.layout.fragment_basic_send_event_send) {
     private lateinit var sendButton: Button
     private lateinit var requestTextView: TextView
     private lateinit var responseTextView: TextView

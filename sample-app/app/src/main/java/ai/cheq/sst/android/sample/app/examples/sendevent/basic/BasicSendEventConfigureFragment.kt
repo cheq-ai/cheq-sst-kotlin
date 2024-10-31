@@ -4,25 +4,33 @@ import ai.cheq.sst.android.app.R
 import ai.cheq.sst.android.core.models.Model
 import ai.cheq.sst.android.models.advertising.AdvertisingModel
 import ai.cheq.sst.android.sample.app.Constants
+import ai.cheq.sst.android.sample.app.examples.TabFragment
 import ai.cheq.sst.android.sample.app.examples.enableButton
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.SwitchCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 
 abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrapper) :
-    Fragment(R.layout.fragment_basic_send_event_configure) {
+    TabFragment(R.layout.fragment_basic_send_event_configure) {
     private lateinit var clientEditText: EditText
     private lateinit var domainEditText: EditText
     private lateinit var publishPathEditText: EditText
     private lateinit var nexusHostEditText: EditText
     private lateinit var dataLayerNameEditText: EditText
+    private lateinit var virtualBrowserPageEditText: EditText
+    private lateinit var userAgentEditText: EditText
     private lateinit var enableDebugSwitch: SwitchCompat
+    private lateinit var includeDefaultModelsSwitch: SwitchCompat
+    private lateinit var includeDeviceModelIdSwitch: SwitchCompat
+    private lateinit var includeDeviceModelOsSwitch: SwitchCompat
+    private lateinit var includeDeviceModelScreenSwitch: SwitchCompat
     private lateinit var includeCustomModelSwitch: SwitchCompat
     private lateinit var includeAdvertisingModelSwitch: SwitchCompat
     private lateinit var populateDataLayerButton: Button
@@ -38,7 +46,13 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         publishPathEditText = view.findViewById(R.id.publish_path)
         nexusHostEditText = view.findViewById(R.id.nexus_host)
         dataLayerNameEditText = view.findViewById(R.id.data_layer_name)
+        virtualBrowserPageEditText = view.findViewById(R.id.virtual_browser_page)
+        userAgentEditText = view.findViewById(R.id.user_agent)
         enableDebugSwitch = view.findViewById(R.id.enable_debug)
+        includeDefaultModelsSwitch = view.findViewById(R.id.include_default_models)
+        includeDeviceModelIdSwitch = view.findViewById(R.id.include_device_model_id)
+        includeDeviceModelOsSwitch = view.findViewById(R.id.include_device_model_os)
+        includeDeviceModelScreenSwitch = view.findViewById(R.id.include_device_model_screen)
         includeCustomModelSwitch = view.findViewById(R.id.include_custom_model)
         includeAdvertisingModelSwitch = view.findViewById(R.id.include_advertising_model)
         populateDataLayerButton = view.findViewById(R.id.populate_data_layer)
@@ -63,6 +77,8 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         publishPathEditText.addTextChangedListener(textWatcher)
         nexusHostEditText.addTextChangedListener(textWatcher)
         dataLayerNameEditText.addTextChangedListener(textWatcher)
+        virtualBrowserPageEditText.addTextChangedListener(textWatcher)
+        userAgentEditText.addTextChangedListener(textWatcher)
 
         clearDataLayerButton.setOnClickListener {
             wrapper.clearDataLayer(lifecycleScope) { updateDataLayerButtons() }
@@ -99,36 +115,59 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         publishPathEditText.setText(wrapper.publishPath)
         nexusHostEditText.setText(wrapper.nexusHost)
         dataLayerNameEditText.setText(wrapper.dataLayerName)
+        virtualBrowserPageEditText.setText(wrapper.virtualBrowserPage)
+        userAgentEditText.setText(wrapper.userAgent)
         enableDebugSwitch.isChecked = wrapper.isDebug
     }
 
     private fun validate() {
-        if (clientEditText.text.toString().isBlank()) {
-            clientEditText.error = "Client is required"
-        } else {
+        if (validateClient()) {
             clientEditText.error = null
-        }
-        if (domainEditText.text.toString().isBlank()) {
-            domainEditText.error = "Domain is required"
         } else {
+            clientEditText.error = "Client is required"
+        }
+        if (validateDomain()) {
             domainEditText.error = null
-        }
-        if (publishPathEditText.text.toString().isBlank()) {
-            publishPathEditText.error = "Publish path is required"
         } else {
+            domainEditText.error = "Domain is required"
+        }
+        if (validatePublishPath()) {
             publishPathEditText.error = null
-        }
-        if (nexusHostEditText.text.toString().isBlank()) {
-            nexusHostEditText.error = "Nexus host is required"
         } else {
+            publishPathEditText.error = "Publish path is required"
+        }
+        if (validateNexusHost()) {
             nexusHostEditText.error = null
-        }
-        if (dataLayerNameEditText.text.toString().isBlank()) {
-            dataLayerNameEditText.error = "Data layer name is required"
         } else {
+            nexusHostEditText.error = "Nexus host is required"
+        }
+        if (validateDataLayerName()) {
             dataLayerNameEditText.error = null
+        } else {
+            dataLayerNameEditText.error = "Data layer name is required"
+        }
+        if (validateVirtualBrowserPage()) {
+            virtualBrowserPageEditText.error = null
+        } else {
+            virtualBrowserPageEditText.error =
+                "Virtual browser page must be a valid URL or not specified"
         }
     }
+
+    private fun validateClient() = clientEditText.text.toString().isNotBlank()
+
+    private fun validateDomain() = domainEditText.text.toString().isNotBlank()
+
+    private fun validatePublishPath() = publishPathEditText.text.toString().isNotBlank()
+
+    private fun validateNexusHost() = nexusHostEditText.text.toString().isNotBlank()
+
+    private fun validateDataLayerName() = dataLayerNameEditText.text.toString().isNotBlank()
+
+    private fun validateVirtualBrowserPage() =
+        virtualBrowserPageEditText.text.toString().isEmpty() || (URLUtil.isValidUrl(
+            virtualBrowserPageEditText.text.toString()
+        ) && Patterns.WEB_URL.matcher(virtualBrowserPageEditText.text.toString()).matches())
 
     private fun configure() {
         var customModels = arrayOf<Model<*>>()
@@ -140,22 +179,35 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         }
 
         val defaultConfig = Constants.getDefaultSstConfig()
-        wrapper.configure(clientEditText.text.toString().ifBlank {
-            clientEditText.setText(defaultConfig.clientName)
-            defaultConfig.clientName
-        }, domainEditText.text.toString().ifBlank {
-            domainEditText.setText(defaultConfig.domain)
-            defaultConfig.domain
-        }, publishPathEditText.text.toString().ifBlank {
-            publishPathEditText.setText(defaultConfig.publishPath)
-            defaultConfig.publishPath
-        }, nexusHostEditText.text.toString().ifBlank {
-            nexusHostEditText.setText(defaultConfig.nexusHost)
-            defaultConfig.nexusHost
-        }, dataLayerNameEditText.text.toString().ifBlank {
-            dataLayerNameEditText.setText(defaultConfig.dataLayerName)
-            defaultConfig.dataLayerName
-        }, enableDebugSwitch.isChecked, customModels, requireContext()
+        val client =
+            validateClient().let { if (it) clientEditText.text.toString() else defaultConfig.clientName }
+        val domain =
+            validateDomain().let { if (it) domainEditText.text.toString() else defaultConfig.domain }
+        val publishPath =
+            validatePublishPath().let { if (it) publishPathEditText.text.toString() else defaultConfig.publishPath }
+        val nexusHost =
+            validateNexusHost().let { if (it) nexusHostEditText.text.toString() else defaultConfig.nexusHost }
+        val dataLayerName =
+            validateDataLayerName().let { if (it) dataLayerNameEditText.text.toString() else defaultConfig.dataLayerName }
+        val virtualBrowserPage =
+            validateVirtualBrowserPage().let { if (it) virtualBrowserPageEditText.text.toString() else defaultConfig.virtualBrowser.page }
+        val userAgent = userAgentEditText.text.toString().ifBlank { null }
+
+        wrapper.configure(
+            client,
+            domain,
+            publishPath,
+            nexusHost,
+            dataLayerName,
+            virtualBrowserPage,
+            userAgent,
+            enableDebugSwitch.isChecked,
+            includeDefaultModelsSwitch.isChecked,
+            includeDeviceModelIdSwitch.isChecked,
+            includeDeviceModelOsSwitch.isChecked,
+            includeDeviceModelScreenSwitch.isChecked,
+            customModels,
+            requireContext()
         )
     }
 }

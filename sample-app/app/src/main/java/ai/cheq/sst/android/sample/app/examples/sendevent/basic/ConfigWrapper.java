@@ -4,8 +4,7 @@ import android.content.Context;
 
 import java.util.function.Consumer;
 
-import ai.cheq.sst.android.core.exceptions.DuplicateModelException;
-import ai.cheq.sst.android.core.exceptions.InvalidModelException;
+import ai.cheq.sst.android.core.exceptions.ConflictingModelException;
 import ai.cheq.sst.android.core.exceptions.NotConfiguredException;
 import ai.cheq.sst.android.core.models.Model;
 import kotlinx.coroutines.CoroutineScope;
@@ -20,6 +19,10 @@ public interface ConfigWrapper {
     String getNexusHost();
 
     String getDataLayerName();
+
+    String getVirtualBrowserPage();
+
+    String getUserAgent();
 
     boolean isDebug();
 
@@ -39,8 +42,14 @@ public interface ConfigWrapper {
             String publishPath,
             String nexusHost,
             String dataLayerName,
+            String virtualBrowserPage,
+            String userAgent,
             boolean isDebug,
+            boolean includeDefaultModels,
+            boolean includeDeviceModelId,
+            boolean includeDeviceModelOs,
+            boolean includeDeviceModelScreen,
             Model<?>[] customModels,
             Context context
-    ) throws InvalidModelException, DuplicateModelException;
+    ) throws ConflictingModelException;
 }

@@ -1,11 +1,11 @@
 package ai.cheq.sst.android.sample.app.examples.sendevent.basic
 
 import ai.cheq.sst.android.app.R
+import ai.cheq.sst.android.sample.app.examples.TabFragment
 import ai.cheq.sst.android.sample.app.examples.enableButton
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.yuyh.jsonviewer.library.JsonRecyclerView
 import kotlinx.coroutines.Job
@@ -17,7 +17,7 @@ import org.json.JSONObject
 import kotlin.time.Duration.Companion.seconds
 
 abstract class BasicSendEventMobileDataFragment(private val wrapper: MobileDataWrapper) :
-    Fragment(R.layout.fragment_basic_send_event_mobile_data) {
+    TabFragment(R.layout.fragment_basic_send_event_mobile_data) {
     private lateinit var refreshButton: Button
     private lateinit var jsonViewer: JsonRecyclerView
     private var refreshJob: Job? = null
@@ -71,5 +71,3 @@ abstract class BasicSendEventMobileDataFragment(private val wrapper: MobileDataW
         }
     }
 }
-
-//Sst.getMobileData()

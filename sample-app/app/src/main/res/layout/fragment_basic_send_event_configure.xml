@@ -231,7 +231,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/models_layout"
+            android:id="@+id/virtual_browser_page_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -241,6 +241,94 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/data_layer_name_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/virtual_browser_page_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/virtual_browser_page"
+                android:text="@string/virtual_browser_page" />
+
+            <EditText
+                android:id="@+id/virtual_browser_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="virtual_browser_page_label,virtual_browser_page"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_agent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/virtual_browser_page_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/user_agent_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/user_agent"
+                android:text="@string/user_agent" />
+
+            <EditText
+                android:id="@+id/user_agent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="user_agent_label,user_agent"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/models_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_agent_layout"
             app:layout_constraintWidth_max="488dp">
 
             <TextView
@@ -261,11 +349,21 @@
                 app:layout_constraintWidth_max="488dp">
 
                 <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_default_models"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:minHeight="48dp"
+                    app:switchPadding="3dp"
+                    android:text="@string/include_default_models" />
+
+                <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/include_custom_model"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:minHeight="48dp"
+                    app:switchPadding="3dp"
                     android:text="@string/include_custom_model" />
 
                 <androidx.appcompat.widget.SwitchCompat
@@ -274,15 +372,17 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:minHeight="48dp"
+                    app:switchPadding="3dp"
                     android:text="@string/include_advertising_model" />
 
                 <androidx.constraintlayout.helper.widget.Flow
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:orientation="horizontal"
-                    app:constraint_referenced_ids="include_custom_model,include_advertising_model"
+                    app:constraint_referenced_ids="include_default_models,include_custom_model,include_advertising_model"
                     app:flow_horizontalAlign="start"
                     app:flow_verticalGap="0dp"
+                    app:flow_horizontalGap="8dp"
                     app:flow_wrapMode="aligned"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -304,6 +404,92 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/device_model_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_agent_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/device_model_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:labelFor="@+id/nexus_host"
+                android:text="@string/device_model"
+                android:textSize="12sp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/device_model_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/device_model_label"
+                app:layout_constraintWidth_max="488dp">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_device_model_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:minHeight="48dp"
+                    app:switchPadding="3dp"
+                    android:text="@string/include_device_model_id" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_device_model_os"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:minHeight="48dp"
+                    app:switchPadding="3dp"
+                    android:text="@string/include_device_model_os" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/include_device_model_screen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:minHeight="48dp"
+                    app:switchPadding="3dp"
+                    android:text="@string/include_device_model_screen" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:constraint_referenced_ids="include_device_model_id,include_device_model_os,include_device_model_screen"
+                    app:flow_horizontalAlign="start"
+                    app:flow_verticalGap="0dp"
+                    app:flow_horizontalGap="8dp"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:flow_wrapMode="aligned"
+                app:constraint_referenced_ids="device_model_label,device_model_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/options_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -313,7 +499,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/models_layout"
+            app:layout_constraintTop_toBottomOf="@+id/device_model_layout"
             app:layout_constraintWidth_max="488dp">
 
             <TextView
@@ -338,6 +524,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    app:switchPadding="3dp"
                     android:text="@string/enable_debug"
                     android:minHeight="48dp" />
 
@@ -451,7 +638,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="client_layout,domain_layout,publish_path_layout,nexus_host_layout,data_layer_name_layout,models_layout,options_layout,data_layer_layout"
+            app:constraint_referenced_ids="client_layout,domain_layout,publish_path_layout,nexus_host_layout,data_layer_name_layout,virtual_browser_page_layout,user_agent_layout,models_layout,device_model_layout,options_layout,data_layer_layout"
             app:flow_horizontalAlign="start"
             app:flow_verticalGap="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -2,6 +2,8 @@ package ai.cheq.sst.android.sample.app.examples.sendevent.basic.kotlin
 
 import ai.cheq.sst.android.core.Config
 import ai.cheq.sst.android.core.Sst
+import ai.cheq.sst.android.core.config.VirtualBrowser
+import ai.cheq.sst.android.core.models.DeviceModel
 import ai.cheq.sst.android.core.models.Model
 import ai.cheq.sst.android.core.models.ModelContext
 import ai.cheq.sst.android.core.models.Models
@@ -41,6 +43,14 @@ class KotlinBasicSendEventConfigureFragment :
 
         override fun getDataLayerName(): String {
             return Sst.config().dataLayerName
+        }
+
+        override fun getVirtualBrowserPage(): String? {
+            return Sst.config().virtualBrowser.page
+        }
+
+        override fun getUserAgent(): String? {
+            return Sst.config().virtualBrowser.userAgent
         }
 
         override fun isDebug(): Boolean {
@@ -101,16 +111,54 @@ class KotlinBasicSendEventConfigureFragment :
             publishPath: String,
             nexusHost: String,
             dataLayerName: String,
+            virtualBrowserPage: String,
+            userAgent: String?,
             isDebug: Boolean,
+            includeDefaultModels: Boolean,
+            includeDeviceModelId: Boolean,
+            includeDeviceModelOs: Boolean,
+            includeDeviceModelScreen: Boolean,
             customModels: Array<Model<*>>,
             context: Context
         ) {
-            val models = Models(*customModels)
+            val models = (if (includeDefaultModels) {
+                Models.default().also {
+                    if (!includeDeviceModelId || !includeDeviceModelOs || !includeDeviceModelScreen) {
+                        it.add(configureDeviceModel(includeDeviceModelId, includeDeviceModelOs, includeDeviceModelScreen))
+                    }
+                }
+            } else {
+                Models.required().also {
+                    if (includeDeviceModelId || includeDeviceModelOs || includeDeviceModelScreen) {
+                        it.add(configureDeviceModel(includeDeviceModelId, includeDeviceModelOs, includeDeviceModelScreen))
+                    }
+                }
+            }).add(*customModels)
             Sst.configure(
                 Config(
-                    clientName, domain, publishPath, nexusHost, dataLayerName, isDebug, models
+                    clientName, domain, publishPath, nexusHost, dataLayerName, VirtualBrowser(virtualBrowserPage, userAgent), models, isDebug
                 )
             ) { context }
+        }
+
+        private fun configureDeviceModel(
+            includeDeviceModelId: Boolean,
+            includeDeviceModelOs: Boolean,
+            includeDeviceModelScreen: Boolean) : DeviceModel {
+            if (includeDeviceModelId && includeDeviceModelOs && includeDeviceModelScreen) {
+                return DeviceModel.default()
+            }
+            return DeviceModel.custom().apply {
+                if (!includeDeviceModelId) {
+                    disableId()
+                }
+                if (!includeDeviceModelOs) {
+                    disableOs()
+                }
+                if (!includeDeviceModelScreen) {
+                    disableScreen()
+                }
+            }.create()
         }
     }
 

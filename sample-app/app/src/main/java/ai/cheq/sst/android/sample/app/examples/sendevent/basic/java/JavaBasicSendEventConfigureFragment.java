@@ -18,9 +18,10 @@ import java.util.function.Consumer;
 
 import ai.cheq.sst.android.core.Config;
 import ai.cheq.sst.android.core.Sst;
-import ai.cheq.sst.android.core.exceptions.DuplicateModelException;
-import ai.cheq.sst.android.core.exceptions.InvalidModelException;
+import ai.cheq.sst.android.core.config.VirtualBrowser;
+import ai.cheq.sst.android.core.exceptions.ConflictingModelException;
 import ai.cheq.sst.android.core.exceptions.NotConfiguredException;
+import ai.cheq.sst.android.core.models.DeviceModel;
 import ai.cheq.sst.android.core.models.Model;
 import ai.cheq.sst.android.core.models.ModelContext;
 import ai.cheq.sst.android.core.models.Models;
@@ -64,6 +65,16 @@ public class JavaBasicSendEventConfigureFragment extends BasicSendEventConfigure
         @Override
         public String getDataLayerName() {
             return Sst.config().getDataLayerName();
+        }
+
+        @Override
+        public String getVirtualBrowserPage() {
+            return Sst.config().getVirtualBrowser().getPage();
+        }
+
+        @Override
+        public String getUserAgent() {
+            return Sst.config().getVirtualBrowser().getUserAgent();
         }
 
         @Override
@@ -139,20 +150,60 @@ public class JavaBasicSendEventConfigureFragment extends BasicSendEventConfigure
                 String publishPath,
                 String nexusHost,
                 String dataLayerName,
+                String virtualBrowserPage,
+                String userAgent,
                 boolean isDebug,
+                boolean includeDefaultModels,
+                boolean includeDeviceModelId,
+                boolean includeDeviceModelOs,
+                boolean includeDeviceModelScreen,
                 Model<?>[] customModels,
                 Context context
-        ) throws InvalidModelException, DuplicateModelException {
-            Models models = new Models(customModels);
+        ) throws ConflictingModelException {
+            Models models;
+            if (includeDefaultModels) {
+                models = Models.defaultModels();
+                if (!includeDeviceModelId || !includeDeviceModelOs || !includeDeviceModelScreen) {
+                    models = models.add(configureDeviceModel(includeDeviceModelId, includeDeviceModelOs, includeDeviceModelScreen));
+                }
+            } else {
+                models = Models.requiredModels();
+                if (includeDeviceModelId || includeDeviceModelOs || includeDeviceModelScreen) {
+                    models = models.add(configureDeviceModel(includeDeviceModelId, includeDeviceModelOs, includeDeviceModelScreen));
+                }
+            }
+
+            models.add(customModels);
             Config config = new Config(clientName,
                                        domain,
                                        publishPath,
                                        nexusHost,
                                        dataLayerName,
-                                       isDebug,
-                                       models
+                                       new VirtualBrowser(virtualBrowserPage, userAgent),
+                                       models,
+                                       isDebug
             );
             Sst.configure(config, () -> context);
+        }
+
+        private static DeviceModel configureDeviceModel(
+                boolean includeDeviceModelId,
+                boolean includeDeviceModelOs,
+                boolean includeDeviceModelScreen) {
+            if (includeDeviceModelId && includeDeviceModelOs && includeDeviceModelScreen) {
+                return DeviceModel.defaultModel();
+            }
+            DeviceModel.Config config = DeviceModel.customModel();
+            if (!includeDeviceModelId) {
+                config.disableId();
+            }
+            if (!includeDeviceModelOs) {
+                config.disableOs();
+            }
+            if (!includeDeviceModelScreen) {
+                config.disableScreen();
+            }
+            return config.create();
         }
 
         static class StaticModel extends Model<StaticModel.Data> {

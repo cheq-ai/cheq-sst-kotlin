@@ -19,6 +19,8 @@
     <string name="include_custom_model">Custom</string>
     <string name="refresh">Refresh</string>
     <string name="data_layer_name">Data layer name</string>
+    <string name="virtual_browser_page">Virtual browser page</string>
+    <string name="user_agent">User agent</string>
     <string name="include_data_layer">Include data layer</string>
     <string name="include_advertising_model">Advertising</string>
     <string name="models">Models</string>
@@ -28,4 +30,9 @@
     <string name="clear">Clear</string>
     <string name="event_type">Event type</string>
     <string name="launch_count">launch_count</string>
+    <string name="include_device_model_id">Id</string>
+    <string name="include_device_model_os">OS</string>
+    <string name="include_device_model_screen">Screen</string>
+    <string name="device_model">Device</string>
+    <string name="include_default_models">Default</string>
 </resources>
