@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toBottomOf="parent"
                 android:textColor="?attr/colorOnSurface" />
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:id="@+id/mobile_data_scrollview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -42,6 +42,7 @@
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:overScrollMode="never"
+                android:fillViewport="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp" />
-            </ScrollView>
+            </androidx.core.widget.NestedScrollView>
 
             <androidx.constraintlayout.helper.widget.Flow
                 android:layout_width="0dp"

@@ -23,6 +23,11 @@ pluginManagement {
         gradlePluginPortal()
         maven("https://jitpack.io")
         mavenLocal()
+
+        /**
+         * This enables the sample-app to be used to test unpublished versions of the SDK.
+         * It is only needed for the sample-app and should not be included in your project.
+         */
         if (gradle.parent == null) {
             val mavenCentralDeploymentVersion =
                 findOptionalLocalProperty("maven.central.deployment.version")

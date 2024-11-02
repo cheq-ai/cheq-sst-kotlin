@@ -8,9 +8,10 @@ plugins {
 }
 
 dependencies {
-    sdkImplementation(this, libs.cheq.sst.kotlin.core)
-    sdkImplementation(this, libs.cheq.sst.kotlin.advertising)
+    implementation(libs.cheq.sst.kotlin.core)
+    implementation(libs.cheq.sst.kotlin.advertising)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.lifecycle.runtime.android)
@@ -29,7 +30,7 @@ android {
 
     namespace = "${group}.${name.replace("-", ".")}"
 
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -51,7 +52,7 @@ android {
     buildTypes {
         defaultConfig {
             applicationId = namespace
-            targetSdk = 34
+            targetSdk = 35
             minSdk = 34
             versionCode = 1
             versionName = "$version"
@@ -83,27 +84,36 @@ android {
     }
 }
 
-val mavenCentralDeploymentVersion =
-    findOptionalLocalProperty("maven.central.deployment.version")
-private fun Project.sdkImplementation(scope: DependencyHandlerScope, dependency: Provider<MinimalExternalModuleDependency>) {
-    scope.implementation(dependency.get().let {
-        var resolvedVersion = it.version
-        if (this.gradle.parent == null && !mavenCentralDeploymentVersion.isNullOrEmpty()) {
-            resolvedVersion = mavenCentralDeploymentVersion
-            println("=====> Substituting ${it.group}:${it.name}:${it.version} with ${it.group}:${it.name}:$resolvedVersion")
-        }
-        "${it.group}:${it.name}:$resolvedVersion"
-    })
-}
+/**
+ * This extension method enables the sample-app to be used to test unpublished versions of the SDK.
+ * It is only needed for the sample-app and should not be included in your project.
+ */
+fun DependencyHandlerScope.implementation(dependency: Provider<MinimalExternalModuleDependency>) {
+    fun properties(rootDir: File?, name: String): Properties {
+        return rootDir?.resolve(name)?.let {
+            when {
+                it.exists() -> Properties().apply { it.reader().use(::load) }
+                else -> properties(rootDir.parentFile, name)
+            }
+        } ?: Properties()
+    }
 
-private fun findOptionalLocalProperty(propertyName: String): String? =
-    properties(rootDir, "local.properties").getProperty(propertyName)
+    fun mavenCentralDeploymentVersion(): String? =
+        properties(rootDir, "local.properties").getProperty("maven.central.deployment.version")
 
-private fun properties(rootDir: File?, name: String): Properties {
-    return rootDir?.resolve(name)?.let {
-        when {
-            it.exists() -> Properties().apply { it.reader().use(::load) }
-            else -> properties(rootDir.parentFile, name)
+    if (project.gradle.parent == null) {
+        val mavenCentralDeploymentVersion = mavenCentralDeploymentVersion()
+        if (!mavenCentralDeploymentVersion.isNullOrEmpty()) {
+            val thisGroup = findProperty("project.group")?.toString()
+            with(dependency.get()) {
+                if (group == thisGroup) {
+                    val substitution = "${group}:${name}:$mavenCentralDeploymentVersion"
+                    println("=====> Substituting ${group}:${name}:${version} with $substitution")
+                    implementation(substitution)
+                    return
+                }
+            }
         }
-    } ?: Properties()
+    }
+    implementation(dependency as Any)
 }

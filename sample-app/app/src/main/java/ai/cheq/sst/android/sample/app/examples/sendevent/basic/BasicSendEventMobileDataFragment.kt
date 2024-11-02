@@ -60,9 +60,10 @@ abstract class BasicSendEventMobileDataFragment(private val wrapper: MobileDataW
         if (mutateButton) {
             refreshButton.enableButton = false
         }
-        wrapper.getMobileData(lifecycleScope) {
-            if (it != null) {
-                jsonViewer.bindJson(JSONObject(it))
+        wrapper.getMobileData(lifecycleScope) { mobileData ->
+            if (mobileData != null) {
+                val sortedMobileData = mobileData.entries.sortedBy { it.key }.associate { it.key to it.value }
+                jsonViewer.bindJson(JSONObject(sortedMobileData))
                 jsonViewer.expandAll()
             }
             if (mutateButton) {
