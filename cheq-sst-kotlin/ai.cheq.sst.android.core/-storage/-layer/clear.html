@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>limitedAdTracking</title>
+    <title>clear</title>
 <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
     <script>document.documentElement.classList.replace("no-js","js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
@@ -43,11 +43,11 @@
 <a class="library-name--link" href="../../../../index.html">
                             Android Server-Side Tagging (SST) SDK
                     </a>            </div>
-            <div class="library-version">0.2.3
+            <div class="library-version">0.4.0
             </div>
         </div>
         <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":cheq-sst-kotlin-advertising:dokkaHtmlPartial/release">androidJvm</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":cheq-sst-kotlin:dokkaHtmlPartial/release">androidJvm</button>
         </div>
     </div>
     <div class="navigation-controls">
@@ -60,12 +60,43 @@
                 <div class="sidebar--inner" id="sideMenu"></div>
             </div>
             <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageids="Advertising Model::ai.cheq.sst.android.models.advertising/AdvertisingModel.Data/limitedAdTracking/#/PointingToDeclaration//1661578136">
-  <div class="breadcrumbs"><a href="../../../index.html">Advertising Model</a><span class="delimiter">/</span><a href="../../index.html">ai.cheq.sst.android.models.advertising</a><span class="delimiter">/</span><a href="../index.html">AdvertisingModel</a><span class="delimiter">/</span><a href="index.html">Data</a><span class="delimiter">/</span><span class="current">limitedAdTracking</span></div>
+<div class="main-content" data-page-type="member" id="content" pageids="Core SDK::ai.cheq.sst.android.core/Storage.Layer/clear/#/PointingToDeclaration//11457359">
+  <div class="breadcrumbs"><a href="../../../index.html">Core SDK</a><span class="delimiter">/</span><a href="../../index.html">ai.cheq.sst.android.core</a><span class="delimiter">/</span><a href="../index.html">Storage</a><span class="delimiter">/</span><a href="index.html">Layer</a><span class="delimiter">/</span><span class="current">clear</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>limited</span><wbr><span>Ad</span><wbr><span><span>Tracking</span></span></h1>
+    <h1 class="cover"><span><span>clear</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin-advertising:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="limited-ad-tracking.html">limitedAdTracking</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="clear.html"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><p class="paragraph">Clears all key-value pairs from the storage layer.</p><p class="paragraph"><a href="../../-sst/configure.html"><strong>Sst.configure</strong></a><strong> must be called once before this method is called.</strong></p><h4 class="">Throws</h4><div class="table"><div class="table-row" data-filterable-current=":cheq-sst-kotlin:dokkaHtmlPartial/release" data-filterable-set=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../../ai.cheq.sst.android.core.exceptions/-not-configured-exception/index.html"><span>Not</span><wbr><span>Configured</span><wbr><span><span>Exception</span></span></a></div></span></div><div><div class="title"><p class="paragraph">If <a href="../../-sst/configure.html">Sst.configure</a> has not been called.</p></div></div></div></div></div><h4 class="">Samples</h4><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.Config
+import ai.cheq.sst.android.core.Sst
+
+fun main() { 
+   //sampleStart 
+   runBlocking {
+            // Cookies
+            Sst.storage.cookies.add("cookieKey1", "cookieValue1")
+            Sst.storage.cookies.add("cookieKey2", "cookieValue2")
+            println(Sst.storage.cookies.all().size) // 2
+
+            Sst.storage.cookies.clear()
+            println(Sst.storage.cookies.all().size) // 0
+
+            // Local Storage
+            Sst.storage.local.add("localStorageKey1", "localStorageValue1")
+            Sst.storage.local.add("localStorageKey2", "localStorageValue2")
+            println(Sst.storage.local.all().size) // 2
+
+            Sst.storage.local.clear()
+            println(Sst.storage.local.all().size) // 0
+
+            // Session Storage
+            Sst.storage.session.add("sessionStorageKey1", "sessionStorageValue1")
+            Sst.storage.session.add("sessionStorageKey2", "sessionStorageValue2")
+            println(Sst.storage.session.all().size) // 2
+
+            Sst.storage.session.clear()
+            println(Sst.storage.session.all().size) // 0
+        } 
+   //sampleEnd
+}</code></pre></div></div></div>
 </div>
     <div class="footer">
         <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>

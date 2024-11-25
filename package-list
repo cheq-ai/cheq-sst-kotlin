@@ -5,8 +5,8 @@ module:Core SDK
 ai.cheq.sst.android.core
 ai.cheq.sst.android.core.config
 ai.cheq.sst.android.core.exceptions
-ai.cheq.sst.android.core.internal
 ai.cheq.sst.android.core.models
 ai.cheq.sst.android.core.monitoring
+ai.cheq.sst.android.core.storage
 module:Advertising Model
 ai.cheq.sst.android.models.advertising
