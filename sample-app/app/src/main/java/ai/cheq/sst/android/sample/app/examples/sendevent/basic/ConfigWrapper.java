@@ -26,13 +26,13 @@ public interface ConfigWrapper {
 
     boolean isDebug();
 
-    void clearDataLayer(CoroutineScope coroutineScope, Runnable onFinished) throws
-            NotConfiguredException;
+    Storage dataLayer();
 
-    void populateDataLayer(CoroutineScope coroutineScope, Runnable onFinished);
+    Storage cookies();
 
-    void isDataLayerPopulated(CoroutineScope coroutineScope, Consumer<Boolean> onFinished) throws
-            InterruptedException, NotConfiguredException;
+    Storage localStorage();
+
+    Storage sessionStorage();
 
     Model<?> getStaticModel();
 
@@ -52,4 +52,15 @@ public interface ConfigWrapper {
             Model<?>[] customModels,
             Context context
     ) throws ConflictingModelException;
+
+    interface Storage {
+        void clear(CoroutineScope coroutineScope, Runnable onFinished) throws
+                NotConfiguredException;
+
+        void populate(CoroutineScope coroutineScope, Runnable onFinished) throws
+                NotConfiguredException;
+
+        void isPopulated(CoroutineScope coroutineScope, Consumer<Boolean> onFinished) throws
+                InterruptedException, NotConfiguredException;
+    }
 }

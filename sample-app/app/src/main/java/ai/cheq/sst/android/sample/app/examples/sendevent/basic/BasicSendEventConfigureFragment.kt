@@ -14,8 +14,11 @@ import android.view.View
 import android.webkit.URLUtil
 import android.widget.Button
 import android.widget.EditText
+import androidx.annotation.IdRes
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
+import java.util.function.Consumer
 
 abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrapper) :
     TabFragment(R.layout.fragment_basic_send_event_configure) {
@@ -33,8 +36,10 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
     private lateinit var includeDeviceModelScreenSwitch: SwitchCompat
     private lateinit var includeCustomModelSwitch: SwitchCompat
     private lateinit var includeAdvertisingModelSwitch: SwitchCompat
-    private lateinit var populateDataLayerButton: Button
-    private lateinit var clearDataLayerButton: Button
+    private lateinit var dataLayerButtons: StorageButtons
+    private lateinit var storageCookiesButtons: StorageButtons
+    private lateinit var storageSessionButtons: StorageButtons
+    private lateinit var storageLocalButtons: StorageButtons
 
     private val advertisingModel = AdvertisingModel()
 
@@ -55,8 +60,42 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         includeDeviceModelScreenSwitch = view.findViewById(R.id.include_device_model_screen)
         includeCustomModelSwitch = view.findViewById(R.id.include_custom_model)
         includeAdvertisingModelSwitch = view.findViewById(R.id.include_advertising_model)
-        populateDataLayerButton = view.findViewById(R.id.populate_data_layer)
-        clearDataLayerButton = view.findViewById(R.id.clear_data_layer)
+        dataLayerButtons = StorageButtons(
+            R.id.populate_data_layer,
+            R.id.clear_data_layer,
+            { coroutineScope, onFinished -> wrapper.dataLayer().populate(coroutineScope, onFinished) },
+            { coroutineScope, onFinished -> wrapper.dataLayer().clear(coroutineScope, onFinished) },
+            { coroutineScope, consumer -> wrapper.dataLayer().isPopulated(coroutineScope, consumer) },
+            view,
+            lifecycleScope
+        )
+        storageCookiesButtons = StorageButtons(
+            R.id.populate_storage_cookies,
+            R.id.clear_storage_cookies,
+            { coroutineScope, onFinished -> wrapper.cookies().populate(coroutineScope, onFinished) },
+            { coroutineScope, onFinished -> wrapper.cookies().clear(coroutineScope, onFinished) },
+            { coroutineScope, consumer -> wrapper.cookies().isPopulated(coroutineScope, consumer) },
+            view,
+            lifecycleScope
+        )
+        storageSessionButtons = StorageButtons(
+            R.id.populate_storage_session,
+            R.id.clear_storage_session,
+            { coroutineScope, onFinished -> wrapper.sessionStorage().populate(coroutineScope, onFinished) },
+            { coroutineScope, onFinished -> wrapper.sessionStorage().clear(coroutineScope, onFinished) },
+            { coroutineScope, consumer -> wrapper.sessionStorage().isPopulated(coroutineScope, consumer) },
+            view,
+            lifecycleScope
+        )
+        storageLocalButtons = StorageButtons(
+            R.id.populate_storage_local,
+            R.id.clear_storage_local,
+            { coroutineScope, onFinished -> wrapper.localStorage().populate(coroutineScope, onFinished) },
+            { coroutineScope, onFinished -> wrapper.localStorage().clear(coroutineScope, onFinished) },
+            { coroutineScope, consumer -> wrapper.localStorage().isPopulated(coroutineScope, consumer) },
+            view,
+            lifecycleScope
+        )
 
         setFields()
 
@@ -79,34 +118,20 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
         dataLayerNameEditText.addTextChangedListener(textWatcher)
         virtualBrowserPageEditText.addTextChangedListener(textWatcher)
         userAgentEditText.addTextChangedListener(textWatcher)
-
-        clearDataLayerButton.setOnClickListener {
-            wrapper.clearDataLayer(lifecycleScope) { updateDataLayerButtons() }
-        }
-
-        populateDataLayerButton.setOnClickListener {
-            wrapper.populateDataLayer(lifecycleScope) { updateDataLayerButtons() }
-        }
-
-        updateDataLayerButtons()
     }
 
     override fun onResume() {
         super.onResume()
         setFields()
-        updateDataLayerButtons()
+        dataLayerButtons.updateButtons(lifecycleScope)
+        storageCookiesButtons.updateButtons(lifecycleScope)
+        storageSessionButtons.updateButtons(lifecycleScope)
+        storageLocalButtons.updateButtons(lifecycleScope)
     }
 
     override fun onPause() {
         super.onPause()
         configure()
-    }
-
-    private fun updateDataLayerButtons() {
-        wrapper.isDataLayerPopulated(lifecycleScope) {
-            populateDataLayerButton.enableButton = !it
-            clearDataLayerButton.enableButton = it
-        }
     }
 
     private fun setFields() {
@@ -209,5 +234,37 @@ abstract class BasicSendEventConfigureFragment(private val wrapper: ConfigWrappe
             customModels,
             requireContext()
         )
+    }
+
+    class StorageButtons(
+        @IdRes private val populateButtonId: Int,
+        @IdRes private val clearButtonId: Int,
+        private val populateFunc: (CoroutineScope, Runnable) -> Unit,
+        private val clearFunc: (CoroutineScope, Runnable) -> Unit,
+        private val isPopulatedFunc: (CoroutineScope, Consumer<Boolean>) -> Unit,
+        view: View,
+        coroutineScope: CoroutineScope
+    ) {
+        private val populateButton: Button = view.findViewById(populateButtonId)
+        private val clearButton: Button = view.findViewById(clearButtonId)
+
+        init {
+            populateButton.setOnClickListener {
+                populateFunc(coroutineScope) { updateButtons(coroutineScope) }
+            }
+
+            clearButton.setOnClickListener {
+                clearFunc(coroutineScope) { updateButtons(coroutineScope) }
+            }
+
+            updateButtons(coroutineScope)
+        }
+
+        fun updateButtons(coroutineScope: CoroutineScope) {
+            isPopulatedFunc(coroutineScope) {
+                populateButton.enableButton = !it
+                clearButton.enableButton = it
+            }
+        }
     }
 }

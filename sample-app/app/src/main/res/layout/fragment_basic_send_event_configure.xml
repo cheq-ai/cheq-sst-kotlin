@@ -571,7 +571,6 @@
                 android:id="@+id/data_layer_label"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:labelFor="@+id/nexus_host"
                 android:text="@string/data_layer" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -634,11 +633,248 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/storage_cookies_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/data_layer_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/storage_cookies_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/storage_cookies" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/storage_cookies_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storage_cookies_layout"
+                app:layout_constraintWidth_max="488dp">
+
+                <Button
+                    android:id="@+id/populate_storage_cookies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/populate"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <Button
+                    android:id="@+id/clear_storage_cookies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/clear"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:constraint_referenced_ids="populate_storage_cookies,clear_storage_cookies"
+                    app:flow_horizontalAlign="start"
+                    app:flow_horizontalGap="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="storage_cookies_label,storage_cookies_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/storage_local_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storage_cookies_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/storage_local_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/storage_local" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/storage_local_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storage_local_layout"
+                app:layout_constraintWidth_max="488dp">
+
+                <Button
+                    android:id="@+id/populate_storage_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/populate"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <Button
+                    android:id="@+id/clear_storage_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/clear"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:constraint_referenced_ids="populate_storage_local,clear_storage_local"
+                    app:flow_horizontalAlign="start"
+                    app:flow_horizontalGap="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="storage_local_label,storage_local_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/storage_session_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storage_local_layout"
+            app:layout_constraintWidth_max="488dp">
+
+            <TextView
+                android:id="@+id/storage_session_label"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/storage_session" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/storage_session_controls_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storage_session_layout"
+                app:layout_constraintWidth_max="488dp">
+
+                <Button
+                    android:id="@+id/populate_storage_session"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/populate"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <Button
+                    android:id="@+id/clear_storage_session"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="@string/clear"
+                    android:enabled="false"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_max="320dp" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:flow_wrapMode="aligned"
+                    app:constraint_referenced_ids="populate_storage_session,clear_storage_session"
+                    app:flow_horizontalAlign="start"
+                    app:flow_horizontalGap="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="storage_session_label,storage_session_controls_layout"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="client_layout,domain_layout,publish_path_layout,nexus_host_layout,data_layer_name_layout,virtual_browser_page_layout,user_agent_layout,models_layout,device_model_layout,options_layout,data_layer_layout"
+            app:constraint_referenced_ids="client_layout,domain_layout,publish_path_layout,nexus_host_layout,data_layer_name_layout,virtual_browser_page_layout,user_agent_layout,models_layout,device_model_layout,options_layout,data_layer_layout,storage_cookies_layout,storage_local_layout,storage_session_layout"
             app:flow_horizontalAlign="start"
             app:flow_verticalGap="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

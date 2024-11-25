@@ -26,6 +26,9 @@
     <string name="models">Models</string>
     <string name="options">Options</string>
     <string name="data_layer">Data layer</string>
+    <string name="storage_cookies">Cookies</string>
+    <string name="storage_session">Session storage</string>
+    <string name="storage_local">Local storage</string>
     <string name="populate">Populate</string>
     <string name="clear">Clear</string>
     <string name="event_type">Event type</string>

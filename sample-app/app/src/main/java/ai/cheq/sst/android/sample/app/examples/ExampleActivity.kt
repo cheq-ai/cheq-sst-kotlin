@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
+
 class ExampleActivity : AppCompatActivity(), Titled {
     private lateinit var binding: ActivityExampleBinding
     private lateinit var adapter: ViewPagerAdapter
@@ -35,7 +36,7 @@ class ExampleActivity : AppCompatActivity(), Titled {
         binding.examplePager.adapter = adapter
 
         val bundle = intent.extras ?: Bundle()
-        bundle.getParcelableArrayList(Constants.EXAMPLES, ExampleDetails::class.java)
+        bundle.parcelableArrayList<ExampleDetails>(Constants.EXAMPLES)
             ?.let { examples ->
                 initToolbar()
                 initNavDrawer(examples)
@@ -74,7 +75,7 @@ class ExampleActivity : AppCompatActivity(), Titled {
     private fun initNavDrawer(examples: List<ExampleDetails>?) {
         val windowManager =
             this.applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val width = windowManager.currentWindowMetrics.bounds.width()
+        val width = windowManager.width
         val dim320dp = resources.getDimensionPixelSize(R.dimen.dim320dp)
         if (width > dim320dp) {
             navigationView.layoutParams.width = dim320dp
