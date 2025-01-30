@@ -51,7 +51,7 @@ public class JavaBasicSendEventConfigureFragment extends BasicSendEventConfigure
         public String getClientName() {
             String clientName = Sst.config().getClientName();
             if (clientName.trim().isEmpty()) {
-                return "di_demo";
+                return "mobile_demo";
             }
             return clientName;
         }

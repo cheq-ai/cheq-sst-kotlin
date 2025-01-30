@@ -1,6 +1,10 @@
 package ai.cheq.sst.android.sample.app.examples.sendevent.basic
 
 import ai.cheq.sst.android.app.R
+import ai.cheq.sst.android.core.monitoring.Error
+import ai.cheq.sst.android.core.monitoring.Event
+import ai.cheq.sst.android.core.monitoring.HttpRequest
+import ai.cheq.sst.android.core.monitoring.HttpResponse
 import ai.cheq.sst.android.sample.app.examples.TabFragment
 import ai.cheq.sst.android.sample.app.examples.enableButton
 import android.graphics.Color
@@ -17,12 +21,14 @@ import androidx.lifecycle.lifecycleScope
 import com.fasterxml.jackson.core.util.DefaultIndenter
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.MaterialColors
+
 
 abstract class BasicSendEventSendFragment(private val wrapper: SendWrapper) :
     TabFragment(R.layout.fragment_basic_send_event_send) {
@@ -39,11 +45,18 @@ abstract class BasicSendEventSendFragment(private val wrapper: SendWrapper) :
         super.onViewCreated(view, savedInstanceState)
 
         this.mapper =
-            ObjectMapper().registerKotlinModule().enable(SerializationFeature.INDENT_OUTPUT)
-                .setDefaultPrettyPrinter(DefaultPrettyPrinter().apply {
+            JsonMapper.builder()
+                .enable(SerializationFeature.INDENT_OUTPUT)
+                .disable(MapperFeature.AUTO_DETECT_CREATORS)
+                .disable(MapperFeature.AUTO_DETECT_FIELDS)
+                .disable(MapperFeature.AUTO_DETECT_GETTERS)
+                .disable(MapperFeature.AUTO_DETECT_IS_GETTERS)
+                .disable(MapperFeature.AUTO_DETECT_SETTERS)
+                .defaultPrettyPrinter(DefaultPrettyPrinter().apply {
                     indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
                     indentObjectsWith(DefaultIndenter("  ", "\n"))
                 })
+                .build()
 
         sendButton = view.findViewById(R.id.send)
         cheqUuidClearButton = view.findViewById(R.id.cheq_uuid_clear)

@@ -31,7 +31,7 @@ class KotlinBasicSendEventConfigureFragment :
         private val uuid = "9c0877d9-253d-4a01-9a0c-dcac62a10dc1"
 
         override fun getClientName(): String {
-            return Sst.config().clientName.ifBlank { "di_demo" }
+            return Sst.config().clientName.ifBlank { "mobile_demo" }
         }
 
         override fun getDomain(): String {

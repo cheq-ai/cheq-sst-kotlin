@@ -16,7 +16,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.lifecycle.runtime.android)
     implementation(libs.json.viewer)
-    implementation(libs.jackson.kotlin)
+    implementation(libs.jackson.datatype.jsr310) {
+        exclude(group = "com.fasterxml.jackson.module", module = "jackson-module-kotlin")
+    }
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -88,7 +90,8 @@ android {
  * This extension method enables the sample-app to be used to test unpublished versions of the SDK.
  * It is only needed for the sample-app and should not be included in your project.
  */
-fun DependencyHandlerScope.implementation(dependency: Provider<MinimalExternalModuleDependency>) {
+fun DependencyHandlerScope.implementation(dependency: Provider<MinimalExternalModuleDependency>,
+                                          dependencyConfiguration: Action<ExternalModuleDependency> = Action {}) {
     fun properties(rootDir: File?, name: String): Properties {
         return rootDir?.resolve(name)?.let {
             when {
@@ -109,7 +112,7 @@ fun DependencyHandlerScope.implementation(dependency: Provider<MinimalExternalMo
                 if (group == thisGroup) {
                     val substitution = "${group}:${name}:$mavenCentralDeploymentVersion"
                     println("=====> Substituting ${group}:${name}:${version} with $substitution")
-                    implementation(substitution)
+                    implementation(substitution, dependencyConfiguration)
                     return
                 }
             }
