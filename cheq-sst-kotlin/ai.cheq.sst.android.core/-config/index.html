@@ -43,7 +43,7 @@
 <a class="library-name--link" href="../../../index.html">
                             Android Server-Side Tagging (SST) SDK
                     </a>            </div>
-            <div class="library-version">1.0.0
+            <div class="library-version">1.1.0
             </div>
         </div>
         <div class="filter-section" id="filter-section">
@@ -70,8 +70,8 @@ import ai.cheq.sst.android.core.config.VirtualBrowser
 fun main() { 
    //sampleStart 
    // Create an config with just the required parameters
-val config = Config("di_demo")
-println(config.clientName) // di_demo 
+val config = Config("mobile_demo")
+println(config.clientName) // mobile_demo 
    //sampleEnd
 }</code></pre></div><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import ai.cheq.sst.android.core.Config
 import ai.cheq.sst.android.core.config.VirtualBrowser
@@ -80,8 +80,8 @@ fun main() {
    //sampleStart 
    // Create an config with all parameters
 val config =
-    Config("di_demo", "t.nc0.co", "sst", "nexus.ensighten.com", "digitalData", VirtualBrowser("https://app-name.example.com"), debug = true)
-println(config.clientName) // di_demo
+    Config("mobile_demo", "t.nc0.co", "sst", "nexus.ensighten.com", "digitalData", VirtualBrowser("https://app-name.example.com"), debug = true)
+println(config.clientName) // mobile_demo
 println(config.domain) // t.nc0.co
 println(config.publishPath) // sst
 println(config.nexusHost) // nexus.ensighten.com
@@ -106,7 +106,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clientName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">domain<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultDomain<span class="token punctuation">, </span></span><span class="parameter ">publishPath<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultPublishPath<span class="token punctuation">, </span></span><span class="parameter ">nexusHost<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultNexusHost<span class="token punctuation">, </span></span><span class="parameter ">dataLayerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultDataLayerName<span class="token punctuation">, </span></span><span class="parameter ">virtualBrowser<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.config/-virtual-browser/index.html">VirtualBrowser</a><span class="token operator"> = </span>VirtualBrowser()<span class="token punctuation">, </span></span><span class="parameter ">models<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.models/-models/index.html">Models</a><span class="token operator"> = </span>Models.default()<span class="token punctuation">, </span></span><span class="parameter ">debug<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span>defaultDebug</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create a new configuration object for the CHEQ SST service.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clientName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">domain<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultDomain<span class="token punctuation">, </span></span><span class="parameter ">publishPath<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultPublishPath<span class="token punctuation">, </span></span><span class="parameter ">nexusHost<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultNexusHost<span class="token punctuation">, </span></span><span class="parameter ">dataLayerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>defaultDataLayerName<span class="token punctuation">, </span></span><span class="parameter ">virtualBrowser<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.config/-virtual-browser/index.html">VirtualBrowser</a><span class="token operator"> = </span>VirtualBrowser()<span class="token punctuation">, </span></span><span class="parameter ">models<span class="token operator">: </span><a href="../../ai.cheq.sst.android.core.models/-models/index.html">Models</a><span class="token operator"> = </span>Models.default()<span class="token punctuation">, </span></span><span class="parameter ">debug<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span>defaultDebug</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create a new configuration object for the CHEQ SST service.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="client-name.html">clientName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the client is used to identify the client for the CHEQ SST service.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="client-name.html">clientName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the client is used to identify the client for the CHEQ SST service.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="data-layer-name.html">dataLayerName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the data layer used to store the data layer in the CHEQ SST service.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="data-layer-name.html">dataLayerName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the data layer used to store the data layer in the CHEQ SST service.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="debug.html">debug</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The debug flag is used to enable debug logging and event callbacks in the CHEQ SST SDK.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="debug.html">debug</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The debug flag is used to enable debug logging and event callbacks in the CHEQ SST SDK.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="domain.html">domain</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The domain used to build the URL to the CHEQ SST service.  Should be your first-party domain or “t.nc0.co” if using the provided third-party domain.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="domain.html">domain</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The domain used to build the URL to the CHEQ SST service.  Should be your first-party domain or “t.nc0.co” if using the provided third-party domain.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -185,7 +185,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="nexus-host.html">nexusHost</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The alternative Ensighten domain for loading tags from a source other than nexus.ensighten.com within the SST instance. Typically only used with a value of “nexus-test.ensighten.com” when testing tags in a committed state.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="nexus-host.html">nexusHost</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The alternative Ensighten domain for loading tags from a source other than nexus.ensighten.com within the SST instance. Typically only used with a value of “nexus-test.ensighten.com” when testing tags in a committed state.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -200,7 +200,7 @@ println(config.debug) // true
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="publish-path.html">publishPath</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The Server-Side Tagging publish path if not using the default "sst".</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":cheq-sst-kotlin:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="publish-path.html">publishPath</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The Server-Side Tagging publish path if not using the default "sst".</p></div></div></div>
                 </div>
               </div>
             </div>
